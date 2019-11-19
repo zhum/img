@@ -1,0 +1,21 @@
+test:
+  - id: 123
+    name: str
+  - id: 124
+    name: str3
+  - id: 222
+    name: str2
+
+# - name: users
+#   driver: sql
+#   location: 'sqlite://test.db'
+#   schema:
+#     id: 'int'
+#     name: str
+#     email: str
+#   relations:
+#     - tasks:
+#         type: reverse_id
+#         table: tasks
+#         my_field: id
+#         key: author_id

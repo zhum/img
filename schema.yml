@@ -1,0 +1,34 @@
+tables:
+  tasks:
+    driver: yaml
+    location: 'data.yml'
+    schema:
+      id: int
+      author_id: int
+      name: str
+      descr: str
+    relations:
+      owner:
+        type: :belongs_to
+        table: users
+        my_field: :author_id
+        key: :id
+      reviewer:
+        type: direct
+        table: users
+        my_field: :author_id
+        key: :id
+
+  users:
+    driver: sql
+    location: 'sqlite://test.db'
+    schema:
+      id: int
+      name: str
+      email: str
+    relations:
+      tasks:
+        type: :has_many
+        table: tasks
+        my_field: :id
+        key: :author_id

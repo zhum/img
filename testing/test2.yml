@@ -1,0 +1,8 @@
+my_test:
+  - id: 1
+    text: qwe
+  - id: 2
+    text: asd
+  - id: 3
+    text: zxc
+

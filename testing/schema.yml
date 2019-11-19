@@ -1,0 +1,52 @@
+tables:
+  boos:
+    driver: http
+    location: 
+      :uri: http://jsonplaceholder.typicode.com/
+      :handlers: json
+    options:
+      name: users
+    schema:
+      id: int
+      name: str
+      email: str
+    relations:
+      tasks:
+        type: :has_many
+        table: tasks
+        my_field: :id
+        key: :author_id
+
+  tasks:
+    driver: yaml
+    location: 'data.yml'
+    schema:
+      id: int
+      author_id: int
+      name: str
+      descr: str
+    relations:
+      owner:
+        type: :belongs_to
+        table: boos
+        my_field: :author_id
+        key: :id
+      reviewer:
+        type: direct
+        table: boos
+        my_field: :author_id
+        key: :id
+
+  users:
+    driver: sql
+    location: 'sqlite://test.db'
+    schema:
+      id: int
+      name: str
+      email: str
+    relations:
+      tasks:
+        type: :has_many
+        table: tasks
+        my_field: :id
+        key: :author_id

@@ -1,0 +1,26 @@
+'tasks':
+    - 'name': 'task1'
+      'descr': 'task number 1'
+      'id': 1
+      'author_id': 2
+    - 'name': 'task2'
+      'descr': 'task number 1'
+      'id': 2
+      'author_id': 1
+    - 'name': 'task3'
+      'descr': 'task number 3'
+      'id': 3
+      'author_id': 1
+    - 'name': 'task4'
+      'descr': 'task number 1'
+      'id': 4
+      'author_id': 2
+
+
+#
+#CREATE TABLE `users` (`id` integer NOT NULL PRIMARY KEY AUTOINCREMENT, `name` varchar(255) NOT NULL, `email` varchar(255) NOT NULL);
+#
+#id|name|email
+# 1|Jane|qwe
+# 2|John|qwe
+# 3|JohnDoe|asd
