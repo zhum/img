@@ -90,11 +90,20 @@ end
 
 module Img
   module HTTPProxy
-    def by_field(*arr)
+    def by_field(arr)
       warn "    http-by-field Array: #{arr.inspect}"
       http_name = Img.options[name.to_s].fetch('name',name)
-      if arr[0].is_a? Hash
-        with_base_path("/#{http_name}").with_params(arr[0].keys[0] => arr[0].values[0]) #field.to_sym => value)
+      result = with_base_path("/#{http_name}")
+      if arr.is_a? Hash
+        arr.each{|k,v|
+          result = result.with_params(k.to_sym => v)
+        }
+        #x = {arr[0].keys[0].to_sym => arr[0].values[0]}
+        #warn "    ** #{x}"
+        #restrict(x) #field.to_sym => value)
+        result
+      # if arr[0].is_a? Hash
+      #   with_base_path("/#{http_name}").with_params(arr[0].keys[0] => arr[0].values[0]) #field.to_sym => value)
       else
         append_path(arr[0].to_sym => arr[1])
       end
